@@ -5,36 +5,42 @@ import Booking from "../Booking/Booking";
 const bookings = [
   {
     id: 0,
+    price: 100,
     name: "Teeth Orthodontics",
     time: "8.00 AM - 9.00 AM",
     space: 10,
   },
   {
     id: 1,
+    price: 120,
     name: "Cosmetic Dentistry",
     time: "10.05 AM - 11.30 AM",
     space: 5,
   },
   {
     id: 2,
+    price: 130,
     name: "Teeth Cleaning",
     time: "5.00 PM - 6.30 PM",
     space: 5,
   },
   {
     id: 3,
+    price: 140,
     name: "Cavity Protection",
     time: "7.00 AM - 8.30 AM",
     space: 10,
   },
   {
     id: 4,
+    price: 110,
     name: "Teeth Orthodontics",
     time: "8.00 AM - 9.00 AM",
     space: 10,
   },
   {
     id: 5,
+    price: 150,
     name: "Teeth Orthodontics",
     time: "8.00 AM - 9.00 AM",
     space: 10,

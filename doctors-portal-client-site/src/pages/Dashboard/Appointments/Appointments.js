@@ -7,13 +7,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 const Appointments = ({ date }) => {
   const { user, token } = useAuth();
   const [appointments, setAppointments] = useState([]);
   useEffect(() => {
     fetch(
-      `https://frozen-mesa-36688.herokuapp.com/appointments?email=${user.email}&date=${date}`,
+      `https://frozen-mesa-36688.herokuapp.com/appointments?email=${
+        user.email
+      }&date=${date.toLocaleDateString()}`,
       { headers: { authorization: `Bearer ${token}` } }
     )
       .then((res) => res.json())
@@ -33,7 +36,7 @@ const Appointments = ({ date }) => {
         <TableBody>
           {appointments.map((row) => (
             <TableRow
-              key={row.name}
+              key={row._id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
@@ -41,7 +44,15 @@ const Appointments = ({ date }) => {
               </TableCell>
               <TableCell>{row.time}</TableCell>
               <TableCell>{row.serviceName}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
+              <TableCell align="right">
+                {row.payment ? (
+                  "paid"
+                ) : (
+                  <Link to={`/dashboard/payment/${row._id}`}>
+                    <button>Pay</button>
+                  </Link>
+                )}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
